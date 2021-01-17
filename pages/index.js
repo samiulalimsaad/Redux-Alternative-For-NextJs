@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "./styles/Home.module.css";
 import { useContext, useEffect } from "react";
 import { dataContext } from "../redux";
 
@@ -10,7 +9,7 @@ const Home = () => {
     }, []);
     console.log("home", state);
     return (
-        <div className={styles.container}>
+        <div className="center">
             <Head>
                 <title>Create Next App</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -24,7 +23,7 @@ const Home = () => {
             >
                 Click Me
             </button>
-            <main className={styles.main}>
+            <main>
                 {state.loading ? (
                     <h1>Loading....</h1>
                 ) : state.error ? (
@@ -33,6 +32,11 @@ const Home = () => {
                     state.data.map((v) => <h1 key={v.name}>{v.name}</h1>)
                 )}
             </main>
+            <style jsx>{`
+                .center {
+                    text-align: center;
+                }
+            `}</style>
         </div>
     );
 };
