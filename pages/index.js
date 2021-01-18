@@ -7,7 +7,6 @@ const Home = () => {
     useEffect(() => {
         requestData(dispatch);
     }, []);
-    console.log("home", state);
     return (
         <div className="center">
             <Head>
@@ -29,7 +28,7 @@ const Home = () => {
                 ) : state.error ? (
                     <h1>{state.error}</h1>
                 ) : (
-                    state.data.map((v) => <h1 key={v.name}>{v.name}</h1>)
+                    state.data.map((v) => <p key={v.name}>{v.name}</p>)
                 )}
             </main>
             <style jsx>{`

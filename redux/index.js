@@ -12,31 +12,15 @@ export const initialState = {
     error: "",
 };
 
-const hasData = () => {
-    console.log("I am hasData");
-    return {
-        type: HAS_DATA,
-    };
-};
-const noData = (data) => {
-    console.log("i am no data");
-    return { type: NO_DATA, payload: data };
-};
-const getData = (data) => {
-    console.log("i am data");
-    return { type: DATA, payload: data };
-};
-
 export const requestData = async (dispatch) => {
-    dispatch(hasData());
+    dispatch({ type: HAS_DATA });
     try {
         const { data } = await axios.get(
             "https://jsonplaceholder.typicode.com/users"
         );
-        console.log(data);
-        dispatch(getData(data));
+        dispatch({ type: DATA, payload: data });
     } catch (error) {
-        dispatch(noData(error.message));
+        dispatch({ type: NO_DATA, payload: error.message });
     }
 };
 
